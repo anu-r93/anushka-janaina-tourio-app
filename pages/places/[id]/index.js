@@ -34,7 +34,7 @@ export default function DetailsPage() {
   const { isReady } = router;
   const { id } = router.query;
   const {
-    data: { comments, ...place } = {},
+    data: { comments, place } = {},
     isLoading,
     error,
   } = useSWR(`/api/places/${id}`);
@@ -82,7 +82,11 @@ export default function DetailsPage() {
           Delete
         </StyledButton>
       </ButtonContainer>
-      <Comments locationName={place.name} comments={comments} />
+      <Comments
+        locationName={place.name}
+        placeId={place._id}
+        comments={comments}
+      />
     </>
   );
 }
