@@ -71,9 +71,10 @@ export default function Card({ name, image, location, id }) {
       </Figure>
       <p>Location: {location}</p>
       <Link href={`places/${id}`} passHref legacyBehavior>
-        <Anchor>
+        More Info
+        {/* <Anchor>
           <ScreenReaderOnly>More Info</ScreenReaderOnly>
-        </Anchor>
+        </Anchor> */}
       </Link>
     </Article>
   );
