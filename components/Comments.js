@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { FormContainer, Input, Label } from "./Form";
+import { useRouter } from "next/router";
+import { FormContainer, Input, Label, Textarea } from "./Form";
 import { StyledButton } from "./StyledButton.js";
 
 export default function Comments({ locationName, comments }) {
@@ -20,17 +21,36 @@ export default function Comments({ locationName, comments }) {
     }
   `;
 
-  function handleSubmitComment(e) {
-    e.preventDefault();
+  const router = useRouter();
+
+  async function handleSubmitComment(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const commentData = Object.fromEntries(formData);
+
+    const { id } = router.query;
+
+    const response = await fetch(`/api/places/${id}/comment`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(commentData),
+    });
+
+    if (response.ok) {
+      await response.json();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
   }
 
   return (
     <Article>
       <FormContainer onSubmit={handleSubmitComment}>
         <Label htmlFor="name">Your Name</Label>
-        <Input type="text" name="name" placeholder="name" />
+        <Input type="text" name="name" placeholder="name" required />
         <Label htmlFor="comment">Your Comment</Label>
-        <Input type="text" name="comment" placeholder="comment here..." />
+        <Textarea name="comment" placeholder="comment here..." required />
         <StyledButton type="submit">Send</StyledButton>
       </FormContainer>
       {comments && (
