@@ -7,12 +7,14 @@ export default async function handler(request, response) {
   const { id } = request.query;
 
   if (request.method === "GET") {
-    const place = await Place.findById(id);
+    const place = await Place.findById(id).populate("comments");
 
     if (!place) {
       return response.status(404).json({ status: "Not Found" });
     }
-    return response.status(200).json(place);
+    const comments = place?.comments;
+
+    return response.status(200).json({ place: place, comments: comments });
   }
 
   if (!id) {
