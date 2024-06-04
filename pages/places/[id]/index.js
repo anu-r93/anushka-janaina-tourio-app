@@ -34,7 +34,7 @@ export default function DetailsPage() {
   const { isReady } = router;
   const { id } = router.query;
   const {
-    data: { place, comments } = {},
+    data: { comments, ...place } = {},
     isLoading,
     error,
   } = useSWR(`/api/places/${id}`);
@@ -47,7 +47,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <Link href={'/'} passHref legacyBehavior>
+      <Link href={"/"} passHref legacyBehavior>
         <StyledLink justifySelf="start">back</StyledLink>
       </Link>
       <ImageContainer>
