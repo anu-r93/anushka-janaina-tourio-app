@@ -4,13 +4,16 @@ import { StyledButton } from "./StyledButton.js";
 
 export default function Comments({ locationName, comments }) {
   const Article = styled.article`
-    display: flex;
+    display: grid;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     border: 5px solid black;
     border-radius: 0.8rem;
-    padding: 0.5rem;
+    padding: 2rem;
     text-align: center;
+    width: 50%;
+    margin-left: 25%;
     p {
       border-bottom: solid 1px black;
       padding: 20px;
