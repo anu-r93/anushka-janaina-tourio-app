@@ -19,6 +19,14 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (request.method === "PUT") {
+    const data = request.body;
+    await Place.findByIdAndUpdate(id, data);
+
+    response.status(200).json({ status: "Place updated!" });
+    return;
+  }
+
   const place = db_places.find((place) => place._id.$oid === id);
   const comment = place?.comments;
   const allCommentIds = comment?.map((comment) => comment.$oid) || [];
