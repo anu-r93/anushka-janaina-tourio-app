@@ -9,13 +9,23 @@ const Article = styled.article`
 `;
 
 const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: space-between;
+  text-align: center;
   position: relative;
-  height: 10rem;
+  width: 100%;
+  height: 20rem;
 `;
 
 const Figure = styled.figure`
   position: relative;
   margin: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 const Anchor = styled.a`
@@ -56,6 +66,7 @@ export default function Card({ name, image, location, id }) {
             alt=""
           />
         </ImageContainer>
+        <hr />
         <figcaption>{name}</figcaption>
       </Figure>
       <p>Location: {location}</p>

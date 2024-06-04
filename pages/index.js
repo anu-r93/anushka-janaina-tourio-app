@@ -6,21 +6,23 @@ import { StyledLink } from "../components/StyledLink.js";
 
 const List = styled.ul`
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding-left: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw;
+  width: 70%;
+  left: 13%;
 `;
 
 const ListItem = styled.li`
-  position: relative;
   width: 100%;
+  height: 100%;
+  text-align: center;
 `;
 const FixedLink = styled(StyledLink)`
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 30px;
+  right: 70px;
 `;
 export default function Home() {
   const { data } = useSWR("/api/places", { fallbackData: [] });

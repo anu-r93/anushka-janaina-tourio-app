@@ -3,6 +3,8 @@ import { StyledButton } from "./StyledButton.js";
 
 export const FormContainer = styled.form`
   display: grid;
+  margin-left: 20%;
+  width: 60%;
   gap: 0.5rem;
 `;
 

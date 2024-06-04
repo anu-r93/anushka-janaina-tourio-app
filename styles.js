@@ -9,6 +9,12 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    height: 100%;
+    width: 100%;
   }
+
+ 
+
+   
 `;
