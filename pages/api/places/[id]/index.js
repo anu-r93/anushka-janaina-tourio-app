@@ -1,6 +1,7 @@
 import { db_comments } from "../../../../lib/db_comments";
 import dbConnect from "../../../../db/connect";
 import Place from "../../../../db/models/Place";
+import Comment from "../../../../db/models/Comments";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -30,7 +31,8 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "DELETE") {
-    await Place.findByIdAndDelete(id);
+    const placeToDelete = await Place.findByIdAndDelete(id);
+    await Comment.deleteMany({ _id: { $in: placeToDelete.comments } });
 
     response.status(200).json({ status: "Place deleted!" });
   }

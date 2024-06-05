@@ -22,7 +22,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "i.natgeofe.com",
+        hostname: "**",
         port: "",
       },
     ],
