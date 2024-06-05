@@ -39,7 +39,7 @@ export default function Comments({ locationName, comments }) {
 
     if (response.ok) {
       await response.json();
-      router.push(`/places/${id}`);
+      router.push(`/places/${id}/comment`);
     } else {
       console.error(`Error: ${response.status}`);
     }
